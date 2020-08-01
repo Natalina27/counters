@@ -6,7 +6,9 @@ import { v4 as uuid } from 'uuid';
 
 
 export const useCounter =(x)=>{
+
     const  rand = +(Math.random() * 10).toFixed();
+
     const initialList = [
         {id: uuid(), x: 1},
         {id: uuid(), x: 2},
