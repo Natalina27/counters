@@ -1,17 +1,24 @@
 import React from 'react';
 import {Counter} from "../Counter";
+import {useCounter} from "../../assets/useCounter";
 
 import s from './App.module.css';
 
 
+
 export function App() {
-    const x = 1, y = 10, rand = +(Math.random() * 10).toFixed();
+    const { list, handleAddCounter, handleDelete } = useCounter();
+    const counterJSX = list.map((el) =>
+        <Counter
+            key={el.id}
+            id={el.id}
+            value={el.x}
+            handleDelete={handleDelete}
+        />);
     return (
         <div className={s.wrap}>
-            <Counter x={x}/>
-            <Counter x={y}/>
-            <Counter x={rand}/>
-            <button>ADD COUNTER</button>
+            {counterJSX}
+            <button className={s.addButton} onClick={handleAddCounter}>ADD COUNTER</button>
         </div>
     );
 }
